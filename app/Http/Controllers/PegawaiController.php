@@ -1,0 +1,78 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\User;
+use App\Biodata;
+use App\Role;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
+
+
+class PegawaiController extends Controller
+{
+
+    
+    public function index()
+    {
+        $data_pegawai=\App\User::where('role_id',3)->get();
+
+        return view('pegawai.pegawai',['data_pegawai'=>$data_pegawai]);
+    }
+
+    public function indexcreate()
+    {
+
+        return view('pegawai.buat_akun');
+    }
+
+
+    public function create(Request $request)
+    {
+        $user=new \App\User;
+        $user->role_id = 3;
+        $user->status_id=$request->status;
+        $user->name=$request->username;
+        $user->email=$request->email; 
+        $user->password=bcrypt($request->password);
+        $user->remember_token = str_random(60);
+        $user->save();
+        //insert data tabel biodatas
+       // $request->request->(['username_id'=>$user->id]);
+        $request->request->add(['user_id'=>$user->id]);
+        $biodata=\App\biodata::create($request->all());
+        //dd($biodata);
+        return redirect('/pegawai')->with('sukses');
+
+    } 
+
+    public function edit($id)
+    {
+        $pegawai= \App\User::find($id);
+
+       // dd($pegawai);
+       return view('pegawai.edit',['pegawai'=> $pegawai]);
+    }
+
+    public function update(Request $request,$id)
+    {
+        $user= \App\User::find($id);
+        $user->role_id = 3;
+        $user->status_id=$request->status;
+        $user->name=$request->username;
+        $user->update($request->all());
+
+        $request->request->add(['user_id'=>$user->id]);
+        $biodata=\App\biodata::find($id);
+        $biodata->nama=$request->nama;
+        $biodata->alamat=$request->alamat;
+        $biodata->update($request->all());
+
+
+        // dd($pegawai);
+        return redirect('/pegawai');
+    }
+
+  
+}
