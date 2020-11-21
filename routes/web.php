@@ -10,15 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('auth.login');
-});
+
 //login
-Route::get('/login','LoginController@login')->name('login');
-Route::post('/postlogin','LoginController@postlogin');
-Route::get('/logout','LoginController@logout');
+Route::get('/','LoginController@login')->name('login');
+Route::post('/postlogin','LoginController@postlogin')->name('postlogin');
+Route::get('/logout','LoginController@logout')->name('logout');
 Route::group(['middleware' => ['auth']], function () {
-    
     //dashboard
     Route::get('/dashboard', 'DashboardController@index');
     //Route::get('/profile', 'ProfileController@index');
