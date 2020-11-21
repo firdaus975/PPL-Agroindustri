@@ -31,13 +31,13 @@ Data Pegawai
                 <td>{{$pegawai->name}}</td>
                 <td>{{$pegawai->email}}</td>
               <td>{{$pegawai->status->name_status}}</td>
-                <td><a href="/pegawai/{{$pegawai->id}}/edit"><button  class="btn btn-primary">Edit</button></a></td>
+                <td><a href="{{Route('editPegawai',[$pegawai->id])}}"><button  class="btn btn-primary">Edit</button></a></td>
               </tr>
               @endforeach
             </tbody>
           </table>
           <div class="card-footer text-right">
-            <a href="/pegawai/buat_akun"><button  class="btn btn-primary">Tambah Data</button></a>
+            <a href="{{Route('buatAkun')}}"><button  class="btn btn-primary">Tambah Data</button></a>
           </div>
         </div>
       </div>
