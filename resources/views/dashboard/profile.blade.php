@@ -19,7 +19,7 @@ Profile
     <div class="row mt-sm-4">
       <div class=" col-md">
         <div class="card">
-          <form action ='/profile/{{$profile->id}}/update' method="post" class="needs-validation" novalidate="">
+          <form action ='{{Route('profileUpdate',[$profile->id])}}' method="post" class="needs-validation" novalidate="">
               {{ csrf_field() }}
             <div class="card-body">
                 <div class="row">
