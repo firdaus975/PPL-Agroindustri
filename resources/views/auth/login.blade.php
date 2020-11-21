@@ -27,7 +27,7 @@
             @if(session('Gagal'))
             <div class="alert alert-warning" role="alert">Username dan Password anda tidak sesuai harap periksa kembali</div>
             @endif
-            <form method="POST" action="/postlogin" class="needs-validation" novalidate="">
+            <form method="POST" action="{{Route('postlogin')}}" class="needs-validation" novalidate="">
                 {{ csrf_field() }}
               <div class="form-group">
                 <label for="email">Email</label>
