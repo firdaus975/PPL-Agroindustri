@@ -13,29 +13,29 @@
 
 //login
 Route::get('/','LoginController@login')->name('login');
-Route::post('/postlogin','LoginController@postlogin')->name('postlogin');
+Route::post('/postlogin','LoginController@postlogin')->name('postLogin');
 Route::get('/logout','LoginController@logout')->name('logout');
 Route::group(['middleware' => ['auth']], function () {
     //dashboard
-    Route::get('/dashboard', 'DashboardController@index');
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     //Route::get('/profile', 'ProfileController@index');
     Route::get('/profile/{id}','ProfileController@profile')->name('profile');
-    Route::post('/profile/{id}/update','ProfileController@update');
+    Route::post('/profile/{id}/update','ProfileController@update')->name('profileUpdate');
     //Pendapatan karet
-    Route::get('/pendapatan-karet', 'Pendapatan_KaretController@index');
+    Route::get('/pendapatan-karet', 'Pendapatan_KaretController@index')->name('pendapatan');
     
     //perkiraan pendapatan
-    Route::get('/perkiraan-pendapatan', 'Perkiraan_PendapatanController@index');
+    Route::get('/perkiraan-pendapatan', 'Perkiraan_PendapatanController@index')->name('perkiraan');
     
     //keuangan
-    Route::get('/keuangan', 'KeuanganController@index');
+    Route::get('/keuangan', 'KeuanganController@index')->name('keuangan');
     
     //pegawai
-    Route::get('/pegawai', 'PegawaiController@index');
-    Route::get('/pegawai/buat_akun', 'PegawaiController@indexcreate');
-    Route::post('/pegawai/buat_akun', 'PegawaiController@create');
-    Route::get('/pegawai/{id}/edit', 'PegawaiController@edit');
-    Route::post('/pegawai/{id}/update', 'PegawaiController@update');
+    Route::get('/pegawai', 'PegawaiController@index')->name('pegawai');
+    Route::get('/pegawai/buat_akun', 'PegawaiController@indexcreate')->name('buatAkun');
+    Route::post('/pegawai/buat_akun', 'PegawaiController@create')->name('postBuatAkun');
+    Route::get('/pegawai/{id}/edit', 'PegawaiController@edit')->name('editPegawai');
+    Route::post('/pegawai/{id}/update', 'PegawaiController@update')->name('updatePegawai');
 });
 
 
