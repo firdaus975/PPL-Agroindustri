@@ -23,7 +23,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/profile/{id}/update','ProfileController@update')->name('profileUpdate');
     //Pendapatan karet
     Route::get('/pendapatan-karet', 'Pendapatan_KaretController@index')->name('pendapatan');
-    
+    Route::post('/pendapatan-karet', 'Pendapatan_KaretController@index')->name('postPendapatan');
+
     //perkiraan pendapatan
     Route::get('/perkiraan-pendapatan', 'Perkiraan_PendapatanController@index')->name('perkiraan');
     
