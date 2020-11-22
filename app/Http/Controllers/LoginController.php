@@ -22,7 +22,7 @@ class LoginController extends Controller
             return redirect('/dashboard');
         }
 
-        return redirect('/login')->with('Gagal',"gagal mask");
+        return redirect('/')->with('Gagal',"gagal mask");
     }
 
     public function logout()
