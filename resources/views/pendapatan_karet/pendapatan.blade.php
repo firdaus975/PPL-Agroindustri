@@ -22,8 +22,10 @@ Pendapatan
                   <th scope="col">Berat Kotor</th>
                   <th scope="col">Tanggal</th>
                   <th scope="col">Status</th>
+                  @if(Auth::user()->role_id != 1 )
                   <th scope="col">Aksi</th>
-                  @if(Auth::user()->role_id != 3 )
+                  @endif
+                  @if(Auth::user()->role_id == 2 )
                   <th scope="col">Verifikasi</th>
                   @endif
                   
@@ -40,8 +42,10 @@ Pendapatan
                   <td>{{$pendapatan->berat_kotor}}</td>
                 <td>{{$pendapatan->created_at->format('Y/m/d')}}</td>
                 <td>{{$pendapatan->confirm->name_confirm}}</td>
-                <td><a href="#"><button  class="btn btn-primary">Edit</button></a></td>
-                @if(Auth::user()->role_id != 3 )
+                @if(Auth::user()->role_id != 1 )
+                <td><a href="{{Route('editPendapatan',[$pendapatan->id])}}"><button  class="btn btn-primary">Edit</button></a></td>
+                @endif
+                @if(Auth::user()->role_id == 2 )
                 <td><a href="#"><button  class="btn btn-primary">Konfirmasi</button></a></td>
                 @endif
                 </tr>
