@@ -22,7 +22,10 @@ Pendapatan
                   <th scope="col">Berat Kotor</th>
                   <th scope="col">Tanggal</th>
                   <th scope="col">Status</th>
+                  <th scope="col">Aksi</th>
+                  @if(Auth::user()->role_id != 3 )
                   <th scope="col">Verifikasi</th>
+                  @endif
                   
                   
                   
@@ -35,16 +38,21 @@ Pendapatan
                   <td>{{$pendapatan->user->name}}</td>
                   <td>{{$pendapatan->berat_bersih}}</td>
                   <td>{{$pendapatan->berat_kotor}}</td>
-                <td>{{$pendapatan->create_at->format('Y/m/d')}}</td>
+                <td>{{$pendapatan->created_at->format('Y/m/d')}}</td>
                 <td>{{$pendapatan->confirm->name_confirm}}</td>
-                  <td><a href="#"><button  class="btn btn-primary">Konfirmasi</button></a></td>
+                <td><a href="#"><button  class="btn btn-primary">Edit</button></a></td>
+                @if(Auth::user()->role_id != 3 )
+                <td><a href="#"><button  class="btn btn-primary">Konfirmasi</button></a></td>
+                @endif
                 </tr>
                 @endforeach
               </tbody>
             </table>
+            @if(Auth::user()->role_id == 3 )
             <div class="card-footer text-right">
               <a href="{{Route('tambahPendapatan')}}"><button  class="btn btn-primary">Tambah Data</button></a>
             </div>
+            @endif
           </div>
         </div>
       </div>
