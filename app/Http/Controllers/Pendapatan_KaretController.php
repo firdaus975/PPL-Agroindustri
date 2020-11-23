@@ -25,10 +25,8 @@ class Pendapatan_KaretController extends Controller
         $pendapatan->confirm_id = 1;
         $pendapatan->berat_bersih=$request->beratBersih;
         $pendapatan->berat_kotor=$request->beratKotor;
-        $request->request->add(['user_id'=>Auth::user()->id]);
+       $pendapatan->user_id=3;
         $pendapatan->save();
-
-        dd($pendapatan);
     //     $user=new \App\User;
     //     $user->role_id = 3;
     //     $user->status_id=$request->status;
@@ -42,7 +40,7 @@ class Pendapatan_KaretController extends Controller
     //     $request->request->add(['user_id'=>$user->id]);
     //     $biodata=\App\biodata::create($request->all());
     //     //dd($biodata);
-    //     return redirect('/pegawai')->with('sukses');
+         return redirect('/pendapatan-karet')->with('sukses');
 
 
     }
