@@ -21,6 +21,9 @@ Pendapatan
                   <th scope="col">Berat Bersih</th>
                   <th scope="col">Berat Kotor</th>
                   <th scope="col">Tanggal</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Verifikasi</th>
+                  
                   
                   
                 </tr>
@@ -32,14 +35,15 @@ Pendapatan
                   <td>{{$pendapatan->user->name}}</td>
                   <td>{{$pendapatan->berat_bersih}}</td>
                   <td>{{$pendapatan->berat_kotor}}</td>
-                <td>{{$pendapatan->create_at->format('Ym-d')}}</td>
-                  <td><a href="#"><button  class="btn btn-primary">Edit</button></a></td>
+                <td>{{$pendapatan->create_at->format('Y/m/d')}}</td>
+                <td>{{$pendapatan->confirm->name_confirm}}</td>
+                  <td><a href="#"><button  class="btn btn-primary">Konfirmasi</button></a></td>
                 </tr>
                 @endforeach
               </tbody>
             </table>
             <div class="card-footer text-right">
-              <a href="{{Route('buatAkun')}}"><button  class="btn btn-primary">Tambah Data</button></a>
+              <a href="{{Route('tambahPendapatan')}}"><button  class="btn btn-primary">Tambah Data</button></a>
             </div>
           </div>
         </div>
