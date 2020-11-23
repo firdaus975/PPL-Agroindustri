@@ -9,7 +9,7 @@ class Pendapatan extends Model
 {
     Protected $table = 'pendapatans';
     Protected $fillable =['user_id','berat_bersih','berat_kotor'];
-    Protected $dates = ['create_at'];
+    Protected $dates = ['created_at','updated_at'];
 
     public function user()
     {
