@@ -16,9 +16,15 @@ class Pendapatan extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function confirm()
+    {
+        return $this->belongsTo('App\confirm');
+    }
+
+
     public function getCreateAt()
     {
-        return Carbon\Carbon::setToStringFormat('Ym-d');
+        return Carbon\Carbon::setToStringFormat('Y/m/d');
     }
 
 
