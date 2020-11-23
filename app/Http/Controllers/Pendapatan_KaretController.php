@@ -44,5 +44,42 @@ class Pendapatan_KaretController extends Controller
 
 
     }
+
+    public function edit($id)
+    {
+        $data_pendapatan = \App\Pendapatan :: find($id);
+
+        return view('pendapatan_Karet.editPendapatan',['data_pendapatan'=>$data_pendapatan]);
+    }
     
+    public function update(Request $request,$id)
+    {
+        $pendapatan= \App\Pendapatan::find($id);
+        $pendapatan->user_id = 3;
+        $pendapatan->confirm_id = 1;
+        $pendapatan->berat_bersih=$request->beratBersih;
+        $pendapatan->berat_kotor=$request->beratKotor;
+        $pendapatan->update($request->all());
+ 
+
+
+
+
+        // dd($pegawai);
+        return redirect('/pendapatan-karet');
+    }
+
+    public function confirmasi(Request $request,$id)
+    {
+        $pendapatan= \App\Pendapatan::find($id);
+        $pendapatan->confirm_id = 2;
+        $pendapatan->update($request->confirm_id);
+ 
+
+
+
+
+        // dd($pegawai);
+        return redirect('/pendapatan-karet');
+    }
 }
