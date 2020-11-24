@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Dotenv\Regex\Success;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
 {
@@ -19,6 +21,7 @@ class LoginController extends Controller
     {
         if(Auth::attempt($request->only('email','password')))
         {
+           $request->session()->flash('key',  Alert::success('Success', 'Berhasil Login'));
             return redirect('/dashboard');
         }
 
