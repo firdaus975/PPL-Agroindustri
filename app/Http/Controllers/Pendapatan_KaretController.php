@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Pendapatan_KaretController extends Controller
 {
@@ -14,8 +15,9 @@ class Pendapatan_KaretController extends Controller
         return view('pendapatan_Karet.pendapatan',['data_pendapatan'=>$data_pendapatan]);
     }
 
-    public function show()
+    public function show($id)
     {
+        $profile= \App\User::find($id);
         return view('pendapatan_Karet.tambahPendapatan');
     }
 
@@ -25,7 +27,7 @@ class Pendapatan_KaretController extends Controller
         $pendapatan->confirm_id = 1;
         $pendapatan->berat_bersih=$request->beratBersih;
         $pendapatan->berat_kotor=$request->beratKotor;
-       $pendapatan->user_id=3;
+       $pendapatan->user_id=$request->userId;
         $pendapatan->save();
     //     $user=new \App\User;
     //     $user->role_id = 3;
@@ -55,17 +57,14 @@ class Pendapatan_KaretController extends Controller
     public function update(Request $request,$id)
     {
         $pendapatan= \App\Pendapatan::find($id);
-        $pendapatan->user_id = 3;
-        $pendapatan->confirm_id = 1;
+        $pendapatan->user_id = $request->userId;
+        $pendapatan->confirm_id = $request->confirm;
         $pendapatan->berat_bersih=$request->beratBersih;
         $pendapatan->berat_kotor=$request->beratKotor;
         $pendapatan->update($request->all());
  
-
-
-
-
         // dd($pegawai);
+        Alert::success('y','ok');
         return redirect('/pendapatan-karet');
     }
 
@@ -74,11 +73,6 @@ class Pendapatan_KaretController extends Controller
         $pendapatan= \App\Pendapatan::find($id);
         $pendapatan->confirm_id = 2;
         $pendapatan->update($request->confirm_id);
- 
-
-
-
-
         // dd($pegawai);
         return redirect('/pendapatan-karet');
     }
