@@ -18,7 +18,13 @@ Pendapatan Karet
                   <div class="row">
                     <div class="form-group col-md-7 col-12">
                       <label>Berat Bersih</label>
-                      <input name ='beratBersih'type="text" class="form-control" value="{{$data_pendapatan->berat_bersih}}" required="">
+                      <input name ='beratBersih'type="number" class="form-control" value="{{$data_pendapatan->berat_bersih}}" required="">
+                      <div class="invalid-feedback">
+                        Please fill in the first name
+                      </div>
+                    </div>
+                    <div class="form-group col-md-5 col-12">
+                      <input name ='userId'type="text" class="form-control" value="{{Auth::user()->id}}" required="" hidden>
                       <div class="invalid-feedback">
                         Please fill in the first name
                       </div>
@@ -27,12 +33,38 @@ Pendapatan Karet
                   <div class="row">
                     <div class="form-group col-md-7 col-12">
                       <label>Berat Kotor</label>
-                      <input name = 'beratKotor'type="text" class="form-control" value="{{$data_pendapatan->berat_kotor}}" required="">
+                      <input type="number" name = 'beratKotor' class="form-control" value="{{$data_pendapatan->berat_kotor}}" required="">
                       <div class="invalid-feedback">
                         Please fill in the 
                       </div>
                     </div>
                   </div>
+                  @if (Auth::user()->role_id == 2 )
+                  <div class="row">
+                    <div class="form-group col-md-7 col-12">
+                      <select  name='confirm' class="custom-select"  >
+                        <option selected>Status Konfirmasi</option>
+                        <option  value="1"@if($data_pendapatan->confirm_id=='1')selected @endif>Belum Dikonfirmasi</option>
+                        <option  value="2"@if($data_pendapatan->confirm_id=='2')selected @endif>Sudah Dikonfirmasi</option>
+                      </select>
+                      <div class="invalid-feedback">
+                        Please fill in the 
+                      </div>
+                    </div>
+                  </div>
+                  @elseif (Auth::user()->role_id != 2 )
+                  <div class="row" hidden>
+                    <div class="form-group col-md-7 col-12">
+                      <select  name='confirm' class="custom-select"  >
+                        <option  value="1"@if($data_pendapatan->confirm_id=='1')selected @endif>Belum Dikonfirmasi</option>
+                        <option  value="2"@if($data_pendapatan->confirm_id=='2')selected @endif>Sudah Dikonfirmasi</option>
+                      </select>
+                      <div class="invalid-feedback">
+                        Please fill in the 
+                      </div>
+                    </div>
+                  </div>
+                  @endif
               </div>
               <div class="card-footer text-center">
                 <button class="btn btn-primary">Save Changes</button>
