@@ -23,6 +23,12 @@ Pendapatan Karet
                         Please fill in the first name
                       </div>
                     </div>
+                    <div class="form-group col-md-5 col-12">
+                      <input name ='userId'type="text" class="form-control" value="{{Auth::user()->id}}" required="" hidden>
+                      <div class="invalid-feedback">
+                        Please fill in the first name
+                      </div>
+                    </div>
                   </div>
                   <div class="row">
                     <div class="form-group col-md-7 col-12">
