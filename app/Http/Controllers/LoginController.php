@@ -21,11 +21,10 @@ class LoginController extends Controller
     {
         if(Auth::attempt($request->only('email','password')))
         {
-           $request->session()->flash('key',  Alert::success('Success', 'Berhasil Login'));
-            return redirect('/dashboard');
+            return redirect('/dashboard')->with('success','Berhasil Login');
         }
 
-        return redirect('/')->with('Gagal',"gagal mask");
+        return redirect('/')->with('erorr',"gagal mask");
     }
 
     public function logout()
