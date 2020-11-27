@@ -25,8 +25,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/pendapatan-karet', 'Pendapatan_KaretController@index')->name('pendapatan');
     Route::get('/pendapatan-karet/{id}/edit', 'Pendapatan_KaretController@edit')->name('editPendapatan');
     Route::post('/pendapatan-karet/{id}/update', 'Pendapatan_KaretController@update')->name('updatePendapatan');
-    Route::get('/pendapatan-karet/tambah-pendapatan', 'Pendapatan_KaretController@show')->name('tambahPendapatan');
+    Route::get('/pendapatan-karet/{id}/tambah-pendapatan', 'Pendapatan_KaretController@show')->name('tambahPendapatan');
     Route::post('/pendapatan-karet/tambah-pendapatan', 'Pendapatan_KaretController@create')->name('postPendapatan');
+    
 
 
     //perkiraan pendapatan
