@@ -24,9 +24,6 @@
         <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
           <div class="p-4 m-3">
             <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">Dikaretin</span></h4>
-            @if(session('Gagal'))
-            <div class="alert alert-warning" role="alert">Username dan Password anda tidak sesuai harap periksa kembali</div>
-            @endif
             <form method="POST" action="{{Route('postLogin')}}" class="needs-validation" novalidate="">
                 {{ csrf_field() }}
               <div class="form-group">
