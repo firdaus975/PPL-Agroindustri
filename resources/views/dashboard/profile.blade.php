@@ -41,7 +41,7 @@ Profile
                 <div class="row">
                   <div class="form-group col-md ">
                     <label>Email</label>
-                  <input name = 'email'type="email" class="form-control" disabled value="{{$profile->email}}" required="">
+                  <input name = 'email'type="email" class="form-control" readonly value="{{$profile->email}}" required="">
                     <div class="invalid-feedback">
                       Please fill in the email
                     </div>
