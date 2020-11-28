@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\User;
 use App\biodata;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 use Illuminate\Http\Request;
@@ -33,6 +34,7 @@ class ProfileController extends Controller
         $biodata->nama=$request->nama;
         $biodata->alamat=$request->alamat;
         $biodata->update($request->all());
+        Alert::success('Sukses','Data Berhasil Diupdate');
 
 
         // dd($pegawai);
