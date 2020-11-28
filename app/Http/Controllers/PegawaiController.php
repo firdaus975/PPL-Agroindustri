@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Biodata;
 use App\Role;
+use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -42,8 +43,9 @@ class PegawaiController extends Controller
        // $request->request->(['username_id'=>$user->id]);
         $request->request->add(['user_id'=>$user->id]);
         $biodata=\App\biodata::create($request->all());
+        Alert::success('Sukses','Data Berhasil Disimpan');
         //dd($biodata);
-        return redirect('/pegawai')->with('sukses');
+        return redirect('/pegawai');
 
     } 
 
@@ -68,7 +70,7 @@ class PegawaiController extends Controller
         $biodata->nama=$request->nama;
         $biodata->alamat=$request->alamat;
         $biodata->update($request->all());
-
+        Alert::success('Sukses','Data Berhasil Diupdate');
 
         // dd($pegawai);
         return redirect('/pegawai');
