@@ -29,6 +29,7 @@ class Pendapatan_KaretController extends Controller
         $pendapatan->berat_kotor=$request->beratKotor;
        $pendapatan->user_id=$request->userId;
         $pendapatan->save();
+        Alert::success('Sukses','Data Berhasil Disimpan');
     //     $user=new \App\User;
     //     $user->role_id = 3;
     //     $user->status_id=$request->status;
@@ -64,16 +65,19 @@ class Pendapatan_KaretController extends Controller
         $pendapatan->update($request->all());
  
         // dd($pegawai);
-        Alert::success('y','ok');
+        Alert::success('Sukses','Data Berhasil Diupdate');
         return redirect('/pendapatan-karet');
     }
 
     public function confirmasi(Request $request,$id)
     {
         $pendapatan= \App\Pendapatan::find($id);
+        $pendapatan->user_id = $request->userId;
         $pendapatan->confirm_id = 2;
-        $pendapatan->update($request->confirm_id);
-        // dd($pegawai);
+        $pendapatan->berat_bersih=$request->beratBersih;
+        $pendapatan->berat_kotor=$request->beratKotor;
+        $pendapatan->update($request->all());
+        Alert::success('Sukses','Data Berhasil Dikonfirmasi');
         return redirect('/pendapatan-karet');
     }
 }
