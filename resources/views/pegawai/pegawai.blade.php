@@ -43,6 +43,7 @@ Data Pegawai
       </div>
     </div>
   </div>
+  {{$data_pegawai->links()}}
 </section>
 
 @stop
