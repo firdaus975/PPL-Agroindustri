@@ -65,10 +65,11 @@ Pendapatan
       </div>
     </div>
     
+    {{$data_pendapatan->links()}}
   </section>
   @foreach ($data_pendapatan as $data)
             
-  !-- Modal -->
+  <!-- Modal -->
 <div class="modal fade" id="modalpendapatanKaret{{$data->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog">
 <div class="modal-content">
