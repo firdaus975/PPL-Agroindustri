@@ -10,7 +10,7 @@ class Pendapatan_KaretController extends Controller
 {
     public function index()
     {
-        $data_pendapatan = \App\Pendapatan :: get();
+        $data_pendapatan = \App\Pendapatan :: simplepaginate(5);
 
         return view('pendapatan_Karet.pendapatan',['data_pendapatan'=>$data_pendapatan]);
     }
