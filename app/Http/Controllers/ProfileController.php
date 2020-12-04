@@ -41,5 +41,12 @@ class ProfileController extends Controller
         return redirect()->back();
     }
 
+    public function gantiPassword(Request $request,$id)
+    {
+       // $profile= \App\User::find($id);
+        //dd($profile)
+        return view('dashboard.gantiPassword');
+
+    }
 }
 
