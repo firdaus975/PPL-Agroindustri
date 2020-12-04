@@ -41,7 +41,7 @@ Buat Akun
                   </div>
                   <div class="form-group col-md-5 col-12">
                     <label>Password</label>
-                    <input name ='password' type="password" class="form-control" value=''>
+                    <input name ='password' type="password" class="form-control" value='rahasia' readonly>
                   </div>
                 </div>
                 <div class="row">
