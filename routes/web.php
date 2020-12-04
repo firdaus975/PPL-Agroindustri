@@ -19,8 +19,10 @@ Route::group(['middleware' => ['auth']], function () {
     //dashboard
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     //Route::get('/profile', 'ProfileController@index');
-    Route::get('/profile/{id}','ProfileController@profile')->name('profile');
+    Route::get('/profile/{id}','ProfileController@profile')->name('profil');
     Route::post('/profile/{id}/update','ProfileController@update')->name('profileUpdate');
+    Route::get('/profile/{id}/ganti-password','ProfileController@gantiPassword')->name('Password');
+
     //Pendapatan karet
     Route::get('/pendapatan-karet', 'Pendapatan_KaretController@index')->name('pendapatan');
     Route::get('/pendapatan-karet/{id}/edit', 'Pendapatan_KaretController@edit')->name('editPendapatan');
@@ -28,6 +30,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/pendapatan-karet/{id}/tambah-pendapatan', 'Pendapatan_KaretController@show')->name('tambahPendapatan');
     Route::post('/pendapatan-karet/tambah-pendapatan', 'Pendapatan_KaretController@create')->name('postPendapatan');
     Route::post('/pendapatan-karet/{id}/konfirmasi', 'Pendapatan_KaretController@confirmasi')->name('konfirmasi');
+    Route::get('/pendapatan-karet/y', 'Pendapatan_KaretController@cari')->name('cari');
     
 
 
