@@ -10,11 +10,21 @@ class Pendapatan_KaretController extends Controller
 {
     public function index()
     {
-        $data_pendapatan = \App\Pendapatan :: simplepaginate(5);
+        //whereMonth('created_at','11')->whereDay('updated_at',)->
+        $data_pendapatan = \App\Pendapatan ::  simplepaginate(5);
 
         return view('pendapatan_Karet.pendapatan',['data_pendapatan'=>$data_pendapatan]);
     }
 
+    public function cari(request $request)
+    {
+        $cari1 = $request->bulan;
+        $cari2 = $request->tahun;
+        //whereMonth('created_at','11')->whereDay('updated_at',)->
+        $data_pendapatan = \App\Pendapatan :: whereMonth('created_at','like',"%".$cari1."%")->whereYear('created_at','like',"%".$cari2."%")-> simplepaginate(5);
+
+        return view('pendapatan_Karet.pendapatan',['data_pendapatan'=>$data_pendapatan]);
+    }
     public function show($id)
     {
         $profile= \App\User::find($id);
