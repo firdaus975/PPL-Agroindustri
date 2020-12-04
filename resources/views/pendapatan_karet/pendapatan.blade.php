@@ -7,7 +7,29 @@ Pendapatan
 @stop
 
 @section('content')
-<section class="section">
+
+<section class="section ">
+    <form action="{{Route('cari')}}" method="GET" >
+      <div class="row ">
+          <select class="custom-select form-group col-md-2" name="bulan">
+            <option selected value="">Bulan</option>
+            <option value="1">Januari</option>
+            <option value="2">Februari</option>
+            <option value="3">Maret</option>
+            <option value="4">April</option>
+            <option value="5">Mei</option>
+            <option value="6">Juni</option>
+            <option value="7">Juli</option>
+            <option value="8">Agustus</option>
+            <option value="9">September</option>
+            <option value="10">Oktober</option>
+            <option value="11">November</option>
+            <option value="12">Desember</option>
+          </select>
+          <input type="number" name="tahun" value="{{old('cari2')}}" class="form-group" placeholder="Tahun">
+      <button type="submit" class="form-group">Cari</button>
+      </div>
+    </form>
     <div class="section-body">
       <div class="row mt-sm-4">
         <div class=" col-md">
@@ -35,6 +57,7 @@ Pendapatan
               </thead>
               <tbody>
                 @foreach ($data_pendapatan as $pendapatan)
+                
                 <tr>
                   <th scope="row">{{$pendapatan->id}}</th>
                   <td>{{$pendapatan->user->name}}</td>
