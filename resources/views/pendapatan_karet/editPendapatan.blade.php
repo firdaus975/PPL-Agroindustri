@@ -18,7 +18,7 @@ Pendapatan Karet
                 <div class="row">
                   <div class="form-group col-md-7 col-12">
                     <label>Tanggal</label>
-                    <input name ='tanggal'type="date" value="{{$data_pendapatan->tanggal}}" class="form-control" value="" required="">
+                    <input disabled type="text" value="{{$data_pendapatan->tanggal->format('Y/m/d')}}" class="form-control" value="" required="">
                     <div class="invalid-feedback">
                       Data tidak boleh kosong
                     </div>
