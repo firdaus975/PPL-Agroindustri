@@ -8,6 +8,7 @@ use App\Role;
 use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
 
 
@@ -17,7 +18,7 @@ class PegawaiController extends Controller
     
     public function index()
     {
-        $data_pegawai=\App\User::where('role_id',3)->simplepaginate(5);
+        $data_pegawai=\App\User::where('role_id',3)->orderby('id','desc')->simplepaginate(5);
 
         return view('pegawai.pegawai',['data_pegawai'=>$data_pegawai]);
     }
@@ -31,12 +32,16 @@ class PegawaiController extends Controller
 
     public function create(Request $request)
     {
+        $this->validate($request,[
+            'email'=>'required|unique:users,email',
+            'no_telephone' => 'required|unique:biodatas,no_telephone'
+        ]);
         $user=new \App\User;
         $user->role_id = 3;
         $user->status_id=$request->status;
         $user->name=$request->username;
         $user->email=$request->email; 
-        $user->password=bcrypt($request->password);
+        $user->password=Hash::make('rahasia');
         $user->remember_token = str_random(60);
         $user->save();
         //insert data tabel biodatas
