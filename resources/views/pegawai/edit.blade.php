@@ -59,7 +59,7 @@ Edit Akun
                   </div>
                   <div class="form-group col-md-5 col-12" style="margin-top: 28px">
                     <select name='status' class="custom-select">
-                      <option selected>Status Pegawai</option>
+                      <option selected disabled>Status Pegawai</option>
                       <option value="1"@if($pegawai->status_id=='1')selected @endif>Aktif</option>
                       <option value="2"@if($pegawai->status_id=='2')selected @endif>Nonaktif</option>
                     </select>
