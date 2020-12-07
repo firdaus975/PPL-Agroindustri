@@ -63,7 +63,7 @@ Buat Akun
                   </div>
                   <div class="form-group col-md-5 col-12" style="margin-top: 28px">
                     <select name='status' class="custom-select">
-                      <option selected>Status Pegawai</option>
+                      <option selected disabled>Status Pegawai</option>
                       <option value="1">Aktif</option>
                       <option value="2">Nonaktif</option>
                     </select>
