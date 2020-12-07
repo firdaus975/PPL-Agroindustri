@@ -22,6 +22,7 @@ Profile
           <form action ='{{Route('profileUpdate',[$profile->id])}}' method="post" class="needs-validation" novalidate="">
               {{ csrf_field() }}
             <div class="card-body">
+              
                 <div class="row">
                   <div class="form-group col-md-6 col-12">
                     <label>Username</label>
