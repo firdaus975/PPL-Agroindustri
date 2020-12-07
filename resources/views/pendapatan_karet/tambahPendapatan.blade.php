@@ -16,9 +16,9 @@ Pendapatan Karet
                 {{ csrf_field() }}
               <div class="card-body">
                 <div class="row">
-                  <div class="form-group col-md-7 col-12">
+                  <div class="form-group col-md-7 col-12" hidden>
                     <label>Berat Bersih</label>
-                    <input name ='tanggal'type="date" class="form-control" value="" required="">
+                    <input name ='tanggal'type="text" class="form-control" value="{{date('Y/m/d')}}" required="">
                     <div class="invalid-feedback">
                       Data tidak boleh kosong
                     </div>
@@ -26,7 +26,7 @@ Pendapatan Karet
                 </div>
                   <div class="row">
                     <div class="form-group col-md-7 col-12">
-                      <label>Tanggal</label>
+                      <label>Berat Bersih</label>
                       <input name ='beratBersih'type="text" class="form-control" value="" required="">
                       <div class="invalid-feedback">
                         Data tidak boleh kosong
