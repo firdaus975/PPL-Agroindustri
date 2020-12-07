@@ -10,7 +10,7 @@ Pendapatan
 
 <section class="section ">
     <form action="{{Route('cari')}}" method="GET" >
-      <div class="row">
+      <div class="d-flex">
           <select class="custom-select  col-md-2" name="bulan">
             <option selected value="" disabled>Bulan</option>
             <option value="1">Januari</option>
@@ -26,7 +26,7 @@ Pendapatan
             <option value="11">November</option>
             <option value="12">Desember</option>
           </select>
-          <input type="number" name="tahun" style="margin-left: 5px"  class="form-control col-md-2" placeholder="Tahun">
+          <input type="number" name="tahun" style="margin-left: 5px"  class="form-control col-md-2" placeholder="Tahun" id="tahun" >
       <button type="submit" class="btn btn-success " style="margin-left: 10px">Cari</button>
       </div>
     </form>
@@ -89,7 +89,11 @@ Pendapatan
                     
                 @endphp
                 @empty
-                <h1>Data Tidak Ditemukan</h1>
+                <div class="alert alert-info" role="alert">
+                  <h3>
+                    Data Tidak Ada atau Belum Diinputkan !!!
+                  </h3>
+                </div>
                 @endforelse
                 @if (empty($total_kotor))
         
@@ -148,7 +152,7 @@ Pendapatan
                 <div class="row">
                   <div class="form-group col-md ">
                     <label>Tanggal</label>
-                    <input id="beratKotor" type="date" name = 'beratKotor' class="form-control" value="{{$data->tanggal}}" required="" readonly>
+                    <input id="beratKotor" type="date" name = 'beratKotor' class="form-control" value="{{$data->tanggal->format('Y/m/d')}}" required="" readonly>
                     <div class="invalid-feedback">
                       Please fill in the 
                     </div>
@@ -187,6 +191,9 @@ Pendapatan
 </div>
 </div>
 </div>
-    
 @endforeach
+@endsection
+
+@section('footer')
+
 @endsection
