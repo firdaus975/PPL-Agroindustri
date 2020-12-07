@@ -25,14 +25,20 @@ Data Pegawai
               </tr>
             </thead>
             <tbody>
+              @php
+               $i=1;   
+              @endphp
               @foreach ($data_pegawai as $pegawai)
               <tr>
-                <th scope="row">{{$pegawai->id}}</th>
+                <th scope="row">{{$i}}</th>
                 <td>{{$pegawai->name}}</td>
                 <td>{{$pegawai->email}}</td>
               <td>{{$pegawai->status->name_status}}</td>
                 <td><a href="{{Route('editPegawai',[$pegawai->id])}}"><button  class="btn btn-primary">Edit</button></a></td>
               </tr>
+              @php
+               $i++;   
+              @endphp
               @endforeach
             </tbody>
           </table>
