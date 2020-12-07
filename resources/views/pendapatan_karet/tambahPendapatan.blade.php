@@ -15,18 +15,27 @@ Pendapatan Karet
             <form method="post" action="{{Route('postPendapatan')}}" class="needs-validation" novalidate="">
                 {{ csrf_field() }}
               <div class="card-body">
+                <div class="row">
+                  <div class="form-group col-md-7 col-12">
+                    <label>Berat Bersih</label>
+                    <input name ='tanggal'type="date" class="form-control" value="" required="">
+                    <div class="invalid-feedback">
+                      Data tidak boleh kosong
+                    </div>
+                  </div>
+                </div>
                   <div class="row">
                     <div class="form-group col-md-7 col-12">
-                      <label>Berat Bersih</label>
+                      <label>Tanggal</label>
                       <input name ='beratBersih'type="text" class="form-control" value="" required="">
                       <div class="invalid-feedback">
-                        Please fill in the first name
+                        Data tidak boleh kosong
                       </div>
                     </div>
                     <div class="form-group col-md-5 col-12">
                       <input name ='userId'type="text" class="form-control" value="{{Auth::user()->id}}" required="" hidden>
                       <div class="invalid-feedback">
-                        Please fill in the first name
+                        Data tidak boleh kosong
                       </div>
                     </div>
                   </div>
@@ -35,7 +44,7 @@ Pendapatan Karet
                       <label>Berat Kotor</label>
                       <input name = 'beratKotor'type="text" class="form-control" value="" required="">
                       <div class="invalid-feedback">
-                        Please fill in the 
+                        Data tidak boleh kosong
                       </div>
                     </div>
                   </div>
