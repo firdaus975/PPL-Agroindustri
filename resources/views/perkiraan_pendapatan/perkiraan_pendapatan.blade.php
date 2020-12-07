@@ -9,7 +9,7 @@ Perkiraan Pendapatan
 @section('content')
 <section class="section">
     <form action="{{Route('cari')}}" method="GET" >
-        <div class="row">
+        <div class="d-flex">
             <input type="number" name="tahun"  class="form-control col-md-2" placeholder="Tahun">
         <button type="submit" style="margin-left: 10px;" class=" btn btn-success">Cari</button>
         </div>
@@ -78,12 +78,8 @@ Perkiraan Pendapatan
         }
     },
     series: [{
-        name: 'Berat Bersih',
+        name: ' Total Berat Bersih',
         data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-
-    }, {
-        name: 'Berat Kotor',
-        data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
 
     }]
 });
