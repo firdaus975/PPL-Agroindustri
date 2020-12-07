@@ -10,6 +10,7 @@
           <li class="nav-item ">
             <a href="{{Route('dashboard')}}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
           </li>
+          @if(Auth::user()->status_id!=2)
           <li class="nav-item dropdown">
             <a href="{{Route('pendapatan')}}" class="nav-link" ><i class="fas fa-columns"></i> <span>Pendapatan Karet</span></a>
           </li>
@@ -21,6 +22,7 @@
           <li class="nav-item dropdown">
             <a href="{{Route('pegawai')}}" class="nav-link"><i class="fas fa-users"></i> <span>Data Pegawai</span></a>
           </li>
+          @endif
           @endif
         </ul>
 
