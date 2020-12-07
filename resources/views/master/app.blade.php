@@ -52,8 +52,10 @@
   <!-- JS Libraies -->
 
   <!-- Template JS File -->
+  <script src="{{asset('assets/js/sweetalert2.all.js')}}"></script>
   <script src="{{asset('assets/js/scripts.js')}}"></script>
   <script src="{{asset('assets/js/custom.js')}}"></script>
+  @yield('footer')
 
   <!-- Page Specific JS File -->
 </body>
