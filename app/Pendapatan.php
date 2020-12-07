@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Pendapatan extends Model
 {
     Protected $table = 'pendapatans';
-    Protected $fillable =['user_id','berat_bersih','berat_kotor'];
-    Protected $dates = ['created_at','updated_at'];
+    Protected $fillable =['user_id','berat_bersih','berat_kotor','tanggal'];
+    Protected $dates = ['tanggal','updated_at'];
 
     public function user()
     {
