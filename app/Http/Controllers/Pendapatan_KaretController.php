@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\DB;
 
 class Pendapatan_KaretController extends Controller
 {
@@ -42,7 +43,7 @@ class Pendapatan_KaretController extends Controller
         $pendapatan->berat_bersih=$request->beratBersih;
         $pendapatan->berat_kotor=$request->beratKotor;
        $pendapatan->user_id=$request->userId;
-       $pendapatan->tanggal=$request->tanggal;
+       $pendapatan->tanggal=now();
         $pendapatan->save();
         Alert::success('Sukses','Data Berhasil Disimpan');
     //     $user=new \App\User;
@@ -72,13 +73,21 @@ class Pendapatan_KaretController extends Controller
     
     public function update(Request $request,$id)
     {
-        $pendapatan= \App\Pendapatan::find($id);
-        $pendapatan->user_id = $request->userId;
-        $pendapatan->confirm_id = $request->confirm;
-        $pendapatan->berat_bersih=$request->beratBersih;
-        $pendapatan->berat_kotor=$request->beratKotor;
-        $pendapatan->tanggal=$request->tanggal;
-        $pendapatan->update($request->all());
+        // $pendapatan= \App\Pendapatan::find($id);
+        // $pendapatan->user_id = $request->userId;
+        // $pendapatan->confirm_id = $request->confirm;
+        // $pendapatan->berat_bersih=$request->beratBersih;
+        // $pendapatan->berat_kotor=$request->beratKotor;
+        // $pendapatan->tanggal=$request->tanggal;
+        // $pendapatan->update($request->all());
+        $pendapatan=DB::table('pendapatans')
+                            ->where('id',$id)
+                            ->update([
+                                'user_id' => $request->userId,
+                                'confirm_id' => $request->confirm,
+                                 'berat_bersih'=> $request->beratBersih,
+                                 'berat_kotor'=>$request->beratKotor,
+                            ]);
  
         // dd($pegawai);
         Alert::success('Sukses','Data Berhasil Diupdate');
