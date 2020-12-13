@@ -30,7 +30,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/pendapatan-karet/{id}/tambah-pendapatan', 'Pendapatan_KaretController@show')->name('tambahPendapatan');
     Route::post('/pendapatan-karet/tambah-pendapatan', 'Pendapatan_KaretController@create')->name('postPendapatan');
     Route::post('/pendapatan-karet/{id}/konfirmasi', 'Pendapatan_KaretController@confirmasi')->name('konfirmasi');
-    Route::get('/pendapatan-karet/y', 'Pendapatan_KaretController@cari')->name('cari');
+    Route::get('/pendapatan-karet/cari', 'Pendapatan_KaretController@cari')->name('cari');
+    Route::post('/pendapatan-karet/total-pendapatan', 'Pendapatan_KaretController@totalPendapatan')->name('totalPendapatan');
     
 
 
