@@ -21,10 +21,16 @@ class Pendapatan_KaretController extends Controller
     {
         $cari1 = $request->bulan;
         $cari2 = $request->tahun;
+        if ($cari1==1) {
+            $data_pendapatan = \App\Pendapatan ::orderby('tanggal')-> whereMonth('tanggal','1')->whereYear('tanggal','LIKE','%'.$cari2.'%')-> simplepaginate(31);
+        } elseif ($cari1==2) {
+            $data_pendapatan = \App\Pendapatan ::orderby('tanggal')-> whereMonth('tanggal','2')->whereYear('tanggal','LIKE','%'.$cari2.'%')-> simplepaginate(31);
+            
+        }else{
         //whereMonth('created_at','11')->whereDay('updated_at',)->
-        $data_pendapatan = \App\Pendapatan :: whereMonth('tanggal','like',"%".$cari1."%")->whereYear('created_at','like',"%".$cari2."%")-> simplepaginate(5);
-
-      
+        $data_pendapatan = \App\Pendapatan ::orderby('tanggal')-> whereMonth('tanggal','LIKE','%'.$cari1.'%')->whereYear('tanggal','LIKE','%'.$cari2.'%')-> simplepaginate(31);
+        }
+        
         return view('pendapatan_Karet.pendapatan',['data_pendapatan'=>$data_pendapatan]);
     }
     public function show($id)
@@ -104,5 +110,21 @@ class Pendapatan_KaretController extends Controller
         $pendapatan->update($request->all());
         Alert::success('Sukses','Data Berhasil Dikonfirmasi');
         return redirect('/pendapatan-karet');
+    }
+
+    public function totalPendapatan(request $request){
+        $this->validate($request,[
+            'kode'=> 'required|unique:total_Pendapatans,kode'
+        ]);
+
+        $tPendapatan=new \App\TotalPendapatan;
+        $tPendapatan->bulan_id = $request->bulan;
+        $tPendapatan->kode=$request->kode;
+        $tPendapatan->total_Pendapatan=$request->totalBersih;
+        $tPendapatan->tahun=$request->tahun;
+        $tPendapatan->save();
+        Alert::success('Sukses','Data Berhasil Disimpan');
+        return redirect()->back();
+
     }
 }
