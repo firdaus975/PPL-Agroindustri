@@ -17,6 +17,13 @@ class Pendapatan_KaretController extends Controller
         return view('pendapatan_Karet.pendapatan',['data_pendapatan'=>$data_pendapatan]);
     }
 
+    public function rekap()
+    {
+        $rekap_Pendapatan = \App\TotalPendapatan::get();
+        return view('pendapatan_Karet.rekapPendapatan',['rekap_pendapatan'=>$rekap_Pendapatan]);
+
+    }
+
     public function cari(request $request)
     {
         $cari1 = $request->bulan;
