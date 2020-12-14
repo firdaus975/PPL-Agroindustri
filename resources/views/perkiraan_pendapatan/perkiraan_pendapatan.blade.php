@@ -7,6 +7,7 @@ Perkiraan Pendapatan
 @stop
 
 @section('content')
+
 <section class="section">
     <form action="#" method="GET" >
         <div class="d-flex">
@@ -14,6 +15,12 @@ Perkiraan Pendapatan
         <button type="submit" style="margin-left: 10px;" class=" btn btn-success">Cari</button>
         </div>
       </form>
+	  <div class=" text-right">
+    <a href="{{Route('rekap')}}">
+
+      <button class="btn btn-primary" >Rekap Total Pendapatan</button>
+    </a>
+  </div>
     <div class="section-body">
       <div class="row mt-sm-4">
         <div class=" col-md">
