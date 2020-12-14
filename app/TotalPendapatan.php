@@ -11,6 +11,6 @@ class TotalPendapatan extends Model
 
     public function bulan()
     {
-        return $this->belongTo('App\Bulan');
+        return $this->belongsTo('App\Bulan');
     }
 }
