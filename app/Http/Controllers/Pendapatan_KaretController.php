@@ -20,7 +20,7 @@ class Pendapatan_KaretController extends Controller
     public function rekap()
     {
         $rekap_Pendapatan = \App\TotalPendapatan::get();
-        return view('pendapatan_Karet.rekapPendapatan',['rekap_pendapatan'=>$rekap_Pendapatan]);
+        return view('perkiraan_pendapatan.rekapPendapatan',['rekap_pendapatan'=>$rekap_Pendapatan]);
 
     }
 
