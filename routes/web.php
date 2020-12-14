@@ -32,12 +32,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/pendapatan-karet/{id}/konfirmasi', 'Pendapatan_KaretController@confirmasi')->name('konfirmasi');
     Route::get('/pendapatan-karet/cari', 'Pendapatan_KaretController@cari')->name('cari');
     Route::post('/pendapatan-karet/total-pendapatan', 'Pendapatan_KaretController@totalPendapatan')->name('totalPendapatan');
-    
+    Route::get('/pendapatan-karet/rekap-pendapatan', 'Pendapatan_KaretController@rekap')->name('rekap');
 
 
     //perkiraan pendapatan
     Route::get('/perkiraan-pendapatan', 'Perkiraan_PendapatanController@index')->name('perkiraan');
-    
+    Route::post('/pendapatan-karet/tambah-perkiraan', 'Perkiraan_PendapatanController@create')->name('buatPerkiraan');  
     //keuangan
     Route::get('/keuangan', 'KeuanganController@index')->name('keuangan');
     
