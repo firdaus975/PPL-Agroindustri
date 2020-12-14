@@ -28,11 +28,14 @@ Pendapatan
           </select>
           <input type="number" name="tahun" style="margin-left: 5px"  class="form-control col-md-2" placeholder="Tahun" id="tahun" >
       <button type="submit" class="btn btn-success " style="margin-left: 10px">Cari</button>
-      <div>
-        <button class="btn btn-primary" data-target="#rekapPendapatan" data-toggle="modal" >Rekap Total Pendapatan</button>
-      </div>
-      </div>
-    </form>
+    </div>
+  </form>
+          <div class=" text-right">
+            <a href="{{Route('rekap')}}">
+
+              <button class="btn btn-primary" >Rekap Total Pendapatan</button>
+            </a>
+          </div>
     <div class="section-body">
       <div class="row mt-sm-4">
         <div class=" col-md">
@@ -96,6 +99,7 @@ Pendapatan
                    
                     
                 @endphp
+               
                 @empty
                 <div class="alert alert-info" role="alert">
                   <h3>
@@ -120,19 +124,21 @@ Pendapatan
                     <th scope="col" style="text-align: right">{{$total_bersih}}</th>
                   </strong>
                 </table>
+				@if(Auth::user()->role_id == 2)
                 @if ($bulan==2&&$i==30)               
-                <div >
+                <div class="card-footer text-right">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#totalPendapatan">Simpan Total Pendapatan </button>
                 </div>
                 @elseif($bulan==1&&$i==32||$bulan==3&&$i==32||$bulan==5&&$i==32||$bulan==7&&$i==32||$bulan==8&&$i==32||$bulan==12&&$i==32||$bulan==12&&$i==32)
-                <div>
+                <div class="card-footer text-right">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#totalPendapatan">Simpan Total Pendapatan </button>
                 </div>
                 @elseif($bulan==4&&$i==31||$bulan==6&&$i==31||$bulan==9&&$i==31||$bulan==11&&$i==31)
-                <div>
+                <div class="card-footer text-right">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#totalPendapatan">Simpan Total Pendapatan </button>
                 </div>
                 @endif
+				@endif
                 @endif
 
                 
@@ -269,77 +275,6 @@ Pendapatan
   </div>
 </div>
 @endforeach
-
-<!-- Modal Rekap Total Pendaptan-->
-<div class="modal fade" id="rekapPendapatan" tabindex="-1" aria-labelledby="rekapPendapatanLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h6 class="modal-title" id="rekapPendaptanLabel">Total Pendapatan Berat Bersih Bulan {{$bulan1}}</h6>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="card">
-          <table class="table table-striped">
-
-            <thead>
-              <tr>
-                <th scope="col">No</th>
-                <th scope="col">Kode</th>
-                <th scope="col">bulan</th>
-                <th scope="col">Pendapatan</th>
-                <th scope="col">Tahun</th>
-              </tr>
-            </thead>
-          </table>
-        </div>
-        {{-- <form method="post" action="{{Route('rekapTotalendapatan')}}" class="needs-validation" novalidate="">
-          {{ csrf_field() }}
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="form-group col-md-5 ">
-                          <label>Kode</label>
-                          <input id="kode" type="text" name = 'kode' class="form-control" value="{{$kode}}" required="" readonly>
-                          <div class="invalid-feedback">
-                            Please fill in the 
-                          </div>
-                        </div>
-                        <div class="form-group col-md-7 ">
-                          <label>Periode</label>
-                          <input id="bulan" type="text"  class="form-control" value="{{$bulan1}}" required="" readonly>
-                          <div class="invalid-feedback">
-                            Please fill in the 
-                          </div>
-                        </div>
-                      </div>
-                        <div class="row">
-                          <div class="form-group col-md ">
-                            <label>Total Pendapatan Berat Bersih</label>
-                            <input id="totalBersih" name ="totalBersih"type="number" class="form-control" value="{{$total2}}" required="" readonly>
-                            <div class="invalid-feedback">
-                              Please fill in the first name
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <input id="tahun" name ='tahun'type="number" class="form-control" value="{{$tahun}}" required="" hidden >
-                            <input id="bulan" name ='bulan'type="number" class="form-control" value="{{$bulan}}" required="" hidden >
-                            <div class="invalid-feedback">
-                              Please fill in the first name
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer ">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                      <button type="submit" class="btn btn-primary">Konfirmasi</button>
-                    </div>
-                  </form> --}}
-      </div>
-    </div>
-  </div>
-</div>
 
 @endsection
 
