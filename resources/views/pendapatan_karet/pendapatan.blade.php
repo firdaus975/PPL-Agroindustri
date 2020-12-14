@@ -9,6 +9,7 @@ Pendapatan
 @section('content')
 
   <section class="section ">
+ 
     <form action="{{Route('cari')}}" method="GET" >
       <div class="d-flex">
           <select class="custom-select  col-md-2" name="bulan">
@@ -30,12 +31,7 @@ Pendapatan
       <button type="submit" class="btn btn-success " style="margin-left: 10px">Cari</button>
     </div>
   </form>
-          <div class=" text-right">
-            <a href="{{Route('rekap')}}">
 
-              <button class="btn btn-primary" >Rekap Total Pendapatan</button>
-            </a>
-          </div>
     <div class="section-body">
       <div class="row mt-sm-4">
         <div class=" col-md">
@@ -129,7 +125,7 @@ Pendapatan
                 <div class="card-footer text-right">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#totalPendapatan">Simpan Total Pendapatan </button>
                 </div>
-                @elseif($bulan==1&&$i==32||$bulan==3&&$i==32||$bulan==5&&$i==32||$bulan==7&&$i==32||$bulan==8&&$i==32||$bulan==12&&$i==32||$bulan==12&&$i==32)
+                @elseif($bulan==1&&$i==32||$bulan==3&&$i==32||$bulan==5&&$i==32||$bulan==7&&$i==32||$bulan==8&&$i==32||$bulan==10&&$i==32||$bulan==12&&$i==32)
                 <div class="card-footer text-right">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#totalPendapatan">Simpan Total Pendapatan </button>
                 </div>
@@ -149,6 +145,7 @@ Pendapatan
               <a href="{{Route('tambahPendapatan',[Auth::user()->id])}}"><button  class="btn btn-primary">Tambah Data</button></a>
             </div>
             @endif
+			
           </div>
         </div>
       </div>
@@ -158,9 +155,10 @@ Pendapatan
     {{$data_pendapatan->links()}}
   </section>
   @foreach ($data_pendapatan as $data)
+  
             
   <!-- Modal -->
-<div class="modal fade" id="modalpendapatanKaret{{$data->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalpendapatanKaret{{$data->id}}" >
 <div class="modal-dialog">
 <div class="modal-content">
 <div class="modal-header">
@@ -177,7 +175,7 @@ Pendapatan
                 <div class="row">
                   <div class="form-group col-md ">
                     <label>Tanggal</label>
-                    <input id="beratKotor" type="date" name = 'beratKotor' class="form-control" value="{{$data->tanggal->format('Y/m/d')}}" required="" readonly>
+                    <input id="beratKotor" type="text" name = 'beratKotor' class="form-control" value="{{$data->tanggal->format('Y/m/d')}}" required="" readonly>
                     <div class="invalid-feedback">
                       Please fill in the 
                     </div>
