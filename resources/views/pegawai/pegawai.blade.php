@@ -18,7 +18,8 @@ Data Pegawai
                 <th scope="col">id</th>
                 <th scope="col">Username</th>
                 <th scope="col">Email</th>
-                <th scope="col">status</th>
+                <th scope="col">Jabatan</th>
+				<th scope="col">status</th>
                 <th scope="col">Aksi</th>
                 
                 
@@ -33,6 +34,7 @@ Data Pegawai
                 <th scope="row">{{$i}}</th>
                 <td>{{$pegawai->name}}</td>
                 <td>{{$pegawai->email}}</td>
+				<td>{{$pegawai->role->name_role}}</td>
               <td>{{$pegawai->status->name_status}}</td>
                 <td><a href="{{Route('editPegawai',[$pegawai->id])}}"><button  class="btn btn-primary">Edit</button></a></td>
               </tr>
