@@ -30,7 +30,6 @@ class Perkiraan_PendapatanController extends Controller
         $perkiraan->perkiraan_Pendapatan=$request->totalPerkiraan;
         $perkiraan->tahun=$request->tahun;
         $perkiraan->save();
-		 Alert::success('Sukses','Data Berhasil Disimpan');
         // dd($perkiraan);
         return redirect()->back();
     }
