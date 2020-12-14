@@ -18,7 +18,7 @@ class PegawaiController extends Controller
     
     public function index()
     {
-        $data_pegawai=\App\User::where('role_id',3)->orderby('id','desc')->simplepaginate(5);
+        $data_pegawai=\App\User::whereNotIn('role_id',[1])->orderby('id','desc')->simplepaginate(5);
 
         return view('pegawai.pegawai',['data_pegawai'=>$data_pegawai]);
     }
