@@ -10,7 +10,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
-
+use Illuminate\Support\Facades\DB;
 
 class PegawaiController extends Controller
 {
@@ -33,7 +33,7 @@ class PegawaiController extends Controller
     public function create(Request $request)
     {
         $this->validate($request,[
-            'email'=>'required|unique:users,email',
+            'email'=>'required|unique:users,email|',
             'no_telephone' => 'required|unique:biodatas,no_telephone'
         ]);
         $user=new \App\User;
@@ -70,11 +70,19 @@ class PegawaiController extends Controller
         $user->name=$request->username;
         $user->update($request->all());
 
-        $request->request->add(['user_id'=>$user->id]);
-        $biodata=\App\biodata::find($id);
-        $biodata->nama=$request->nama;
-        $biodata->alamat=$request->alamat;
-        $biodata->update($request->all());
+        // $request->request->add(['user_id'=>$user->id]);
+        // $biodata=\App\biodata::find($id);
+        // $biodata->nama=$request->nama;
+        // $biodata->update($request->all());
+        $pendapatan=DB::table('biodatas')
+                            ->where('user_id',$id)
+                            ->update([
+                                 'user_id' => $id,
+                                'nama' => $request->nama,
+                                 'alamat'=> $request->alamat,
+                                 'no_telephone'=>$request->no_telephone,
+                                ]);
+		
         Alert::success('Sukses','Data Berhasil Diupdate');
 
         // dd($pegawai);
