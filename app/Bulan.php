@@ -18,4 +18,9 @@ class Bulan extends Model
     {
         return $this->hasMany('App\Perkiraan');
     }
+
+    public function gajiPegawai()
+    {
+        return $this->hasMany('App\GajiPegawai');
+    }
 }
