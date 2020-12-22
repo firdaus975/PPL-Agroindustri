@@ -40,6 +40,29 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/pendapatan-karet/tambah-perkiraan', 'Perkiraan_PendapatanController@create')->name('buatPerkiraan');  
     //keuangan
     Route::get('/keuangan', 'KeuanganController@index')->name('keuangan');
+    Route::get('/keuangan/gaji/{id}{role_id}','KeuanganController@gaji')->name('gaji');
+    Route::get('/keuangan/penjualan-pabrik','KeuanganController@pendapatan')->name('pendapatanPabrik');
+    //keuangan-penjualan
+    Route::get('/keuangan/tambah-penjualan','PendapatanController@index')->name('tambahPendapatan');
+    Route::post('/keuangan/tambah-pejualan/tambah-penjualan','PendapatanController@create')->name('postPenjualan');
+    Route::get('/keuangan/edit-penjualan/{id}','PendapatanController@edit')->name('editPenjualan');
+    Route::post('/keuangan/update-penjualan/{id}','PendapatanController@update')->name('updatePenjualan');
+    //keuangan-pengeluaran
+	Route::get('/keuangan/pengeluaran-pabrik','KeuanganController@pengeluaran')->name('pengeluaranPabrik');
+    Route::post('/keuangan/pengeluaran-pabrik/tambah-pengeluaran','PengeluaranController@create')->name('postPengeluaran');
+    Route::get('/keuangan/pengeluaran-pabrik/edit/{id}','PengeluaranController@edit')->name('editPengeluaran');
+    Route::post('/keuangan/pengeluaran-pabrik/update/{id}','PengeluaranController@update')->name('updatePengeluaran');
+    Route::get('/keuangan/tambah-pengeluaran','PengeluaranController@index')->name('tambahPengeluaran');
+    //keuangan-gaji
+ //   Route::get('/keuangan/gaji/{id}{role_id}','GajiPegawaiController@index')->name('gaji');
+    Route::get('/keuagan/lihat','GajiPegawaiController@lihatGaji')->name('lihatGaji');
+	Route::get('/keuangan/gaji-pegawai/{id}','GajiPegawaiController@gaji2')->name('gaji2');
+    Route::get('/keuagan/tambah-gaji/{id}','GajiPegawaiController@index2')->name('tambahGaji');
+	Route::get('/keuagan/rincian-gaji/{id}','GajiPegawaiController@rincian')->name('rincianGaji');
+    Route::post('/keuangan/buat-gaji','GajiPegawaiController@create')->name('postGaji');
+    Route::get('/keuangan/edit-gaji/{id}','GajiPegawaiController@edit')->name('editGaji');
+    Route::post('/keuangan/edit-gaji/{id}{user_id}/update','GajiPegawaiController@update')->name('updateGaji');
+	
     
     //pegawai
     Route::get('/pegawai', 'PegawaiController@index')->name('pegawai');
