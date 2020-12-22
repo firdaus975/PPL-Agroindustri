@@ -20,14 +20,14 @@ Edit Akun
                     <label>Username</label>
                     <input name ='username'type="text" class="form-control" value="{{$pegawai->name}}" required="">
                     <div class="invalid-feedback">
-                      Please fill in the first name
+                      Silakan cek kembali dan lengkapi form
                     </div>
                   </div>
                   <div class="form-group col-md-6 col-20">
                     <label>Nama Pegawai</label>
                     <input name = 'nama' type="text" class="form-control" value="{{$pegawai->biodata->nama}}" required="">
                     <div class="invalid-feedback">
-                      Please fill in the last name
+                     Silakan cek kembali dan lengkapi form
                     </div>
                   </div>
                 </div>
@@ -36,7 +36,7 @@ Edit Akun
                     <label>Email</label>
                   <input name = 'email'type="email" class="form-control" disabled value="{{$pegawai->email}}" required="">
                     <div class="invalid-feedback">
-                      Please fill in the email
+                      Silakan cek kembali dan lengkapi form
                     </div>
                   </div>
                 </div>
@@ -45,16 +45,16 @@ Edit Akun
                     <label>Alamat</label>
                     <input name ='alamat' type="text" class="form-control" value="{{$pegawai->biodata->alamat}}" required="">
                     <div class="invalid-feedback">
-                      Please fill in the first name
+                      Silakan cek kembali dan lengkapi form
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="form-group col-md-7 col-12">
                     <label>No Telephone</label>
-                    <input name='no_telephone' type="text" class="form-control" value="{{$pegawai->biodata->no_telephone}}" required="">
+                    <input name='no_telephone' type="number" class="form-control" value="{{$pegawai->biodata->no_telephone}}" required="">
                     <div class="invalid-feedback">
-                      Please fill in the first name
+                      Silakan cek kembali dan lengkapi forme
                     </div>
                   </div>
                   <div class="form-group col-md-5 col-12" style="margin-top: 28px">
@@ -64,13 +64,13 @@ Edit Akun
                       <option value="2"@if($pegawai->status_id=='2')selected @endif>Nonaktif</option>
                     </select>
                     <div class="invalid-feedback">
-                      Please fill in the first name
+                     Silakan cek kembali dan lengkapi form
                     </div>
                   </div>
                 </div>
             </div>
             <div class="card-footer text-right">
-              <button class="btn btn-primary">Save Changes</button>
+              <button class="btn btn-primary">Simpan</button>
             </div>
           </form>
         </div>
